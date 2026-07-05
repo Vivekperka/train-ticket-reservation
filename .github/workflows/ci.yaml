@@ -30,7 +30,8 @@ jobs:
 
       - name: Package with Maven
         run: mvn package
-    
+      - name: Verify WAR file
+        run: ls -lh target/
            
              
         
