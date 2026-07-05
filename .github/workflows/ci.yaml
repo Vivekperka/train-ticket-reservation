@@ -1,29 +1,36 @@
-name: ci pipeline to build with maven
+name: CI pipeline to build with Maven
+
 on:
-   push:
-      branches: 
-        - master
+  push:
+    branches:
+      - master
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-   steps:
-     - name: checkout code
-       uses: actions/checkout@v3
-        
-     - name: set-up jdk
-       uses: actions/setup-java@v3
-       with:
-         distribution: temurin
-         java-version: "17"
-     - name: Validate with Maven 
-       run: mvn validate
-           
-     - name: compile with maven
-      run: mvn compile
-     - name: test with maven
-       run: mvn test
-     - name: package with maven
-       run: mvn package
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Validate with Maven
+        run: mvn validate
+
+      - name: Compile with Maven
+        run: mvn compile
+
+      - name: Test with Maven
+        run: mvn test
+
+      - name: Package with Maven
+        run: mvn package
+    
            
              
         
